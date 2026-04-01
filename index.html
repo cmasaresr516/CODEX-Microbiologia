@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CODEX: MICROBIOLOGÍA VETERINARIA — El Apothecario del Campo</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #c9a84c;
+    --gold-light: #f0d080;
+    --gold-dark: #8a6f2e;
+    --crimson: #8b1a1a;
+    --crimson-light: #c0392b;
+    --parchment: #1a1208;
+    --parchment-mid: #231a0a;
+    --parchment-light: #2e2210;
+    --text-main: #d4b896;
+    --text-dim: #8a7055;
+    --white: #f0e8d0;
+    --biohazard: #c0392b;
+    --bsl1: #2ecc71;
+    --bsl2: #f39c12;
+    --bsl3: #e74c3c;
+    --bsl4: #8e44ad;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--parchment);
+    color: var(--text-main);
+    font-family: 'EB Garamond', serif;
+    font-size: 16px;
+    line-height: 1.7;
+    background-image:
+      radial-gradient(ellipse at 20% 20%, rgba(139,26,26,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 80%, rgba(201,168,76,0.05) 0%, transparent 60%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='none'/%3E%3Ccircle cx='1' cy='1' r='0.5' fill='rgba(201,168,76,0.04)'/%3E%3C/svg%3E");
+  }
+
+  /* ——————————————— SCROLLBAR ——————————————— */
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: var(--parchment); }
+  ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 0; }
+
+  /* ——————————————— COVER ——————————————— */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    padding: 60px 40px;
+    border-bottom: 4px solid var(--gold-dark);
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at center, rgba(139,26,26,0.25) 0%, transparent 70%),
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(201,168,76,0.04) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(201,168,76,0.04) 40px);
+    pointer-events: none;
+  }
+
+  .cover-eagle {
+    font-size: 90px;
+    line-height: 1;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 30px rgba(201,168,76,0.5));
+    animation: pulse-gold 3s ease-in-out infinite;
+  }
+
+  @keyframes pulse-gold {
+    0%, 100% { filter: drop-shadow(0 0 20px rgba(201,168,76,0.4)); }
+    50% { filter: drop-shadow(0 0 50px rgba(201,168,76,0.8)); }
+  }
+
+  .cover-sub {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    letter-spacing: 8px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    opacity: 0.8;
+  }
+
+  .cover-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(40px, 7vw, 80px);
+    font-weight: 900;
+    color: var(--gold-light);
+    text-shadow:
+      0 0 40px rgba(201,168,76,0.6),
+      0 2px 0 rgba(0,0,0,0.8),
+      0 4px 8px rgba(0,0,0,0.5);
+    line-height: 1.1;
+    margin-bottom: 8px;
+    letter-spacing: 4px;
+  }
+
+  .cover-subtitle {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(18px, 3vw, 32px);
+    color: var(--crimson-light);
+    text-shadow: 0 0 20px rgba(192,57,43,0.5);
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+  }
+
+  .ornament {
+    width: 100%;
+    max-width: 500px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--gold-dark), var(--gold), transparent);
+    margin: 20px auto;
+    position: relative;
+  }
+
+  .ornament::before, .ornament::after {
+    content: '✦';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gold);
+    font-size: 14px;
+  }
+  .ornament::before { left: 20%; }
+  .ornament::after { right: 20%; }
+
+  .cover-meta {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-top: 30px;
+  }
+
+  .cover-seal {
+    position: absolute;
+    bottom: 40px;
+    right: 60px;
+    width: 100px;
+    height: 100px;
+    border: 3px solid var(--gold-dark);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: var(--gold-dark);
+    text-align: center;
+    opacity: 0.6;
+    padding: 10px;
+    line-height: 1.4;
+  }
+
+  /* ——————————————— LAYOUT ——————————————— */
+  .content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+  }
+
+  /* ——————————————— CHAPTER HEADER ——————————————— */
+  .chapter {
+    margin: 60px 0 40px;
+    position: relative;
+  }
+
+  .chapter-number {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 11px;
+    letter-spacing: 6px;
+    color: var(--crimson-light);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .chapter-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(24px, 4vw, 42px);
+    font-weight: 700;
+    color: var(--gold-light);
+    text-shadow: 0 0 20px rgba(201,168,76,0.3);
+    line-height: 1.2;
+    position: relative;
+    padding-bottom: 16px;
+  }
+
+  .chapter-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--crimson), var(--gold), transparent);
+  }
+
+  .chapter-flavor {
+    font-style: italic;
+    color: var(--text-dim);
+    font-size: 15px;
+    margin: 16px 0 0;
+    padding-left: 20px;
+    border-left: 3px solid var(--crimson);
+    line-height: 1.6;
+  }
+
+  /* ——————————————— SECTION HEADER ——————————————— */
+  .section-header {
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin: 40px 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-header::before {
+    content: '';
+    width: 24px;
+    height: 2px;
+    background: var(--crimson);
+    flex-shrink: 0;
+  }
+
+  /* ——————————————— DATA CARD (unit stat block) ——————————————— */
+  .data-card {
+    background: var(--parchment-mid);
+    border: 1px solid var(--gold-dark);
+    margin: 24px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .data-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--crimson), var(--gold-dark), var(--crimson));
+  }
+
+  .data-card-header {
+    background: linear-gradient(135deg, rgba(139,26,26,0.6), rgba(46,30,10,0.9));
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--gold-dark);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .data-card-name {
+    font-family: 'Cinzel', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--gold-light);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .data-card-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--crimson-light);
+    border: 1px solid var(--crimson);
+    padding: 3px 10px;
+    text-transform: uppercase;
+  }
+
+  .data-card-body {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  @media (max-width: 600px) {
+    .data-card-body { grid-template-columns: 1fr; }
+  }
+
+  .data-card-body.single { grid-template-columns: 1fr; }
+
+  .stat-block {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 12px 16px;
+  }
+
+  .stat-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .stat-value {
+    font-size: 15px;
+    color: var(--white);
+    line-height: 1.5;
+  }
+
+  /* ——————————————— BSL TABLE ——————————————— */
+  .bsl-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-family: 'EB Garamond', serif;
+  }
+
+  .bsl-table th {
+    background: linear-gradient(135deg, rgba(139,26,26,0.8), rgba(46,30,10,1));
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    padding: 12px 16px;
+    text-align: left;
+    border: 1px solid var(--gold-dark);
+  }
+
+  .bsl-table td {
+    padding: 12px 16px;
+    border: 1px solid rgba(201,168,76,0.15);
+    color: var(--text-main);
+    vertical-align: top;
+    font-size: 15px;
+  }
+
+  .bsl-table tr:nth-child(even) td { background: rgba(0,0,0,0.2); }
+  .bsl-table tr:hover td { background: rgba(201,168,76,0.05); }
+
+  .bsl-badge {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border-radius: 0;
+    text-transform: uppercase;
+  }
+
+  .bsl-1 { background: var(--bsl1); color: #000; }
+  .bsl-2 { background: var(--bsl2); color: #000; }
+  .bsl-3 { background: var(--bsl3); color: #fff; }
+  .bsl-4 { background: var(--bsl4); color: #fff; }
+
+  /* ——————————————— WARNING BLOCK ——————————————— */
+  .warning-block {
+    background: rgba(139,26,26,0.15);
+    border: 1px solid var(--crimson);
+    border-left: 4px solid var(--crimson-light);
+    padding: 16px 20px;
+    margin: 20px 0;
+    position: relative;
+  }
+
+  .warning-block::before {
+    content: '⚠ PROTOCOLO OBLIGATORIO';
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--crimson-light);
+    margin-bottom: 8px;
+  }
+
+  /* ——————————————— LORE BLOCK ——————————————— */
+  .lore-block {
+    background: rgba(201,168,76,0.05);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-left: 4px solid var(--gold-dark);
+    padding: 20px 24px;
+    margin: 24px 0;
+    font-style: italic;
+    color: var(--text-dim);
+    font-size: 15px;
+    line-height: 1.8;
+    position: relative;
+  }
+
+  .lore-block::before {
+    content: '"';
+    position: absolute;
+    top: -10px;
+    left: 16px;
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 60px;
+    color: var(--gold-dark);
+    opacity: 0.4;
+    line-height: 1;
+  }
+
+  .lore-source {
+    display: block;
+    margin-top: 10px;
+    font-style: normal;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+  }
+
+  /* ——————————————— THREAT PYRAMID ——————————————— */
+  .pyramid-container {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+  }
+
+  .pyramid {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .pyramid-level {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 8px auto;
+    padding: 12px 20px;
+    border: 1px solid;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pyramid-level::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.1;
+  }
+
+  .p4 { border-color: #8e44ad; max-width: 100%; }
+  .p4::before { background: #8e44ad; }
+  .p3 { border-color: #e74c3c; max-width: 88%; }
+  .p3::before { background: #e74c3c; }
+  .p2 { border-color: #f39c12; max-width: 72%; }
+  .p2::before { background: #f39c12; }
+  .p1 { border-color: #2ecc71; max-width: 56%; }
+  .p1::before { background: #2ecc71; }
+
+  .pyramid-badge {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 20px;
+    font-weight: 900;
+    min-width: 44px;
+    text-align: center;
+  }
+  .p4 .pyramid-badge { color: #c39bd3; }
+  .p3 .pyramid-badge { color: #e74c3c; }
+  .p2 .pyramid-badge { color: #f39c12; }
+  .p1 .pyramid-badge { color: #2ecc71; }
+
+  .pyramid-text {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ——————————————— TRANSMISSION DIAGRAM ——————————————— */
+  .transmission-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  @media (max-width: 600px) { .transmission-grid { grid-template-columns: 1fr; } }
+
+  .transmission-card {
+    background: var(--parchment-mid);
+    border: 1px solid var(--gold-dark);
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .transmission-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  .horiz::before { background: linear-gradient(90deg, var(--gold), var(--gold-dark)); }
+  .vert::before { background: linear-gradient(90deg, var(--crimson), #5a0000); }
+
+  .transmission-icon { font-size: 30px; margin-bottom: 10px; }
+
+  .transmission-title {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  /* ——————————————— VECTOR TABLE ——————————————— */
+  .vector-row {
+    display: flex;
+    gap: 12px;
+    margin: 10px 0;
+    align-items: flex-start;
+  }
+
+  .vector-type {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+    min-width: 90px;
+    padding-top: 2px;
+    flex-shrink: 0;
+  }
+
+  /* ——————————————— SEPARATOR ——————————————— */
+  .sep {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 40px 0;
+    color: var(--gold-dark);
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 18px;
+    opacity: 0.5;
+  }
+  .sep::before, .sep::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-dark));
+  }
+  .sep::after {
+    background: linear-gradient(90deg, var(--gold-dark), transparent);
+  }
+
+  /* ——————————————— PROTOCOL LIST ——————————————— */
+  .protocol-list {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0;
+  }
+
+  .protocol-list li {
+    padding: 10px 16px;
+    border-left: 2px solid var(--gold-dark);
+    margin-bottom: 8px;
+    background: rgba(0,0,0,0.2);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 15px;
+  }
+
+  .protocol-list li::before {
+    content: '◆';
+    color: var(--gold);
+    font-size: 10px;
+    margin-top: 4px;
+    flex-shrink: 0;
+  }
+
+  /* ——————————————— EXAM TABLE ——————————————— */
+  .exam-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+  }
+
+  @media (max-width: 600px) { .exam-grid { grid-template-columns: 1fr; } }
+
+  .exam-card {
+    background: var(--parchment-light);
+    border: 1px solid var(--gold-dark);
+    padding: 16px;
+    text-align: center;
+  }
+
+  .exam-points {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 36px;
+    color: var(--gold-light);
+    display: block;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .exam-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+  }
+
+  .exam-detail {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-top: 8px;
+  }
+
+  /* ——————————————— GRADE TABLE ——————————————— */
+  .grade-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    border: 1px solid transparent;
+    margin-bottom: 6px;
+    background: rgba(0,0,0,0.2);
+    transition: border-color 0.2s;
+  }
+
+  .grade-row:hover { border-color: var(--gold-dark); }
+
+  .grade-pct {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    color: var(--text-dim);
+    min-width: 120px;
+    flex-shrink: 0;
+  }
+
+  .grade-bar {
+    flex: 1;
+    height: 6px;
+    background: rgba(255,255,255,0.05);
+    position: relative;
+  }
+
+  .grade-fill { height: 100%; }
+  .grade-name {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    min-width: 120px;
+    flex-shrink: 0;
+    text-align: right;
+  }
+
+  .grade-status {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    padding: 3px 8px;
+    border: 1px solid;
+    text-transform: uppercase;
+    min-width: 80px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  /* ——————————————— ONE HEALTH DIAGRAM ——————————————— */
+  .one-health-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  @media (max-width: 600px) { .one-health-grid { grid-template-columns: 1fr; } }
+
+  .one-health-card {
+    background: var(--parchment-mid);
+    border: 1px solid var(--gold-dark);
+    padding: 24px 20px;
+    text-align: center;
+  }
+
+  .one-health-icon { font-size: 40px; margin-bottom: 12px; }
+
+  .one-health-title {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .one-health-text { font-size: 14px; color: var(--text-dim); }
+
+  /* ——————————————— FOOTER ——————————————— */
+  .codex-footer {
+    border-top: 2px solid var(--gold-dark);
+    padding: 30px 40px;
+    text-align: center;
+    margin-top: 60px;
+    background: var(--parchment-mid);
+  }
+
+  .footer-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 14px;
+    color: var(--gold-dark);
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+  }
+
+  .footer-text {
+    font-size: 13px;
+    color: var(--text-dim);
+    font-style: italic;
+  }
+
+  /* ——————————————— MICRO SIZE SCALE ——————————————— */
+  .scale-container {
+    overflow-x: auto;
+    padding: 10px 0;
+    margin: 20px 0;
+  }
+
+  .scale-track {
+    position: relative;
+    height: 70px;
+    min-width: 700px;
+    background: linear-gradient(90deg, rgba(139,26,26,0.15), rgba(201,168,76,0.1));
+    border: 1px solid var(--gold-dark);
+    border-radius: 0;
+    margin: 20px 0 40px;
+  }
+
+  .scale-axis {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gold-dark);
+  }
+
+  .scale-item {
+    position: absolute;
+    bottom: 8px;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 11px;
+    color: var(--text-dim);
+    font-family: 'Cinzel', serif;
+    line-height: 1.3;
+  }
+
+  .scale-item span {
+    display: block;
+    width: 1px;
+    height: 20px;
+    background: var(--gold-dark);
+    margin: 0 auto 4px;
+  }
+
+  /* ——————————————— GLOSSARY ——————————————— */
+  .glossary-entry {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 0;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    padding: 14px 0;
+  }
+
+  @media (max-width: 600px) { .glossary-entry { grid-template-columns: 1fr; } }
+
+  .glossary-term {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 1px;
+    padding-right: 20px;
+    text-transform: uppercase;
+  }
+
+  .glossary-def { font-size: 15px; color: var(--text-main); }
+
+  /* ——————————————— NAVIGATION ——————————————— */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(26,18,8,0.95);
+    border-bottom: 2px solid var(--gold-dark);
+    padding: 10px 30px;
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+
+  .nav-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 14px;
+    color: var(--gold);
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-right: 10px;
+  }
+
+  .nav a {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--text-dim);
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: color 0.2s;
+  }
+
+  .nav a:hover { color: var(--gold); }
+
+  .main-content { padding-top: 50px; }
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-title">⚕ CODEX</div>
+  <a href="#intro">I. Introducción</a>
+  <a href="#concepts">II. Conceptos</a>
+  <a href="#threats">III. Amenazas</a>
+  <a href="#biosecurity">IV. Bioseguridad</a>
+  <a href="#protocols">V. Protocolos</a>
+  <a href="#campaign">VI. Campaña</a>
+</nav>
+
+<div class="main-content">
+
+<!-- ===== COVER ===== -->
+<div class="cover">
+  <div class="cover-eagle">⚕</div>
+  <div class="cover-sub">Capítulo Apothecario · Facultad de Veterinaria · UdelaR · M.M. XXVI</div>
+  <div class="cover-title">CODEX:<br>MICROBIOLOGÍA</div>
+  <div class="cover-subtitle">Veterinaria — El Apothecario del Campo</div>
+  <div class="ornament"></div>
+  <p style="max-width:600px; font-size:17px; color:var(--text-dim); font-style:italic; line-height:1.8;">
+    En los innumerables mundos del Universo, fuerzas microscópicas libran guerras invisibles contra 
+    los huéspedes que habitan la carne. El Apothecario debe conocer a sus enemigos — bacterias, virus 
+    y hongos — con la misma precisión que conoce sus propias armas, pues solo quien comprende la 
+    amenaza puede combatirla.
+  </p>
+  <div class="ornament"></div>
+  <div class="cover-meta">Tercer Semestre · Plan 2021 · Semipresencial · 70 horas · 8 Créditos</div>
+
+  <div class="cover-seal">
+    SELLO<br>APOTHECARIO<br>✦<br>FVET<br>UDELAR
+  </div>
+</div>
+
+<!-- ===== CONTENT ===== -->
+<div class="content">
+
+  <!-- ===== CHAPTER I: INTRODUCTION ===== -->
+  <div class="chapter" id="intro">
+    <div class="chapter-number">◆ Capítulo I ◆</div>
+    <div class="chapter-title">Introducción a la Microbiología</div>
+    <div class="chapter-flavor">
+      "El enemigo más peligroso es aquel que no puedes ver. Aprende a verlos, Apothecario."<br>
+      <span style="font-style:normal; font-size:13px; color:var(--gold-dark);">— Dra. Laureana De Brun, Maestra Apothecaria</span>
+    </div>
+  </div>
+
+  <div class="section-header">§ Doctrina del Capítulo: ¿Qué es la Microbiología?</div>
+
+  <div class="data-card">
+    <div class="data-card-header">
+      <span class="data-card-name">MICROBIOLOGÍA</span>
+      <span class="data-card-tag">Definición Primaria</span>
+    </div>
+    <div class="data-card-body single">
+      <div class="stat-block">
+        <div class="stat-label">Etimología</div>
+        <div class="stat-value">
+          <strong style="color:var(--gold)">MICRO</strong> <span style="color:var(--text-dim)">(Pequeño)</span> +
+          <strong style="color:var(--gold)">BIO</strong> <span style="color:var(--text-dim)">(Vida)</span> +
+          <strong style="color:var(--gold)">LOGÍA</strong> <span style="color:var(--text-dim)">(Estudio)</span>
+        </div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-label">Definición RAE</div>
+        <div class="stat-value">Estudio de los microbios — seres microscópicos no visibles a simple vista, la mayoría unicelulares aunque algunos son pluricelulares.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header">§ Entidades Reconocidas (Fuerzas del Campo)</div>
+
+  <div class="transmission-grid">
+    <div class="transmission-card horiz">
+      <div class="transmission-icon">🦠</div>
+      <div class="transmission-title">Bacteria</div>
+      <p style="font-size:14px; color:var(--text-dim);">Organismos procariotas unicelulares. Se clasifican por forma (bacilo, coco, vibrio, espirilo) y tinción Gram. Son los agentes infecciosos más estudiados en veterinaria.</p>
+    </div>
+    <div class="transmission-card horiz">
+      <div class="transmission-icon">⬡</div>
+      <div class="transmission-title">Virus</div>
+      <p style="font-size:14px; color:var(--text-dim);">Entidades subcelulares, parásitos obligados. No son células — son genoma envuelto en proteínas. Requieren huésped vivo para replicarse. Los más pequeños del campo de batalla.</p>
+    </div>
+    <div class="transmission-card vert">
+      <div class="transmission-icon">🍄</div>
+      <div class="transmission-title">Hongos (Micología)</div>
+      <p style="font-size:14px; color:var(--text-dim);">Eucariotas. Incluyen levaduras (unicelulares) y mohos/setas (pluricelulares). Algunos forman esporas de alta resistencia al ambiente.</p>
+    </div>
+    <div class="transmission-card vert">
+      <div class="transmission-icon">🔬</div>
+      <div class="transmission-title">Técnicas de Diagnóstico</div>
+      <p style="font-size:14px; color:var(--text-dim);">El Apothecario usa cultivos, tinciones, técnicas moleculares (PCR), serología, inoculación en huevos embrionados y modelos animales para identificar al enemigo.</p>
+    </div>
+  </div>
+
+  <div class="section-header">§ Escala de Tamaño — Mapa del Campo de Batalla</div>
+
+  <div class="scale-container">
+    <div style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:3px;color:var(--gold-dark);text-transform:uppercase;margin-bottom:6px;">Escala de Tamaño de los Microorganismos</div>
+    <div class="scale-track">
+      <div class="scale-axis"></div>
+      <div class="scale-item" style="left:5%"><span></span>Átomo<br>0.1 Å</div>
+      <div class="scale-item" style="left:15%"><span></span>Proteínas<br>1-10 nm</div>
+      <div class="scale-item" style="left:28%"><span style="background:var(--crimson-light)"></span><strong style="color:var(--crimson-light)">Virus</strong><br>20-300 nm</div>
+      <div class="scale-item" style="left:44%"><span style="background:var(--gold)"></span><strong style="color:var(--gold)">Bacterias</strong><br>1-10 µm</div>
+      <div class="scale-item" style="left:62%"><span></span>Levaduras<br>10-100 µm</div>
+      <div class="scale-item" style="left:75%"><span></span>Protozoos<br>10-100 µm</div>
+      <div class="scale-item" style="left:90%"><span></span>Hongos<br>1 mm+</div>
+    </div>
+    <div style="display:flex;gap:16px;font-size:12px;color:var(--text-dim);font-family:'Cinzel',serif;letter-spacing:2px;flex-wrap:wrap;">
+      <span style="color:var(--crimson-light)">■</span> Microscopía Electrónica (desde 1 nm)
+      <span style="color:var(--gold)">■</span> Microscopía Óptica (100 nm – 1 mm)
+      <span>■</span> Ojo Desnudo (>100 µm)
+    </div>
+  </div>
+
+  <div class="sep">✦ ✦ ✦</div>
+
+  <!-- ===== CHAPTER II: CONCEPTS ===== -->
+  <div class="chapter" id="concepts">
+    <div class="chapter-number">◆ Capítulo II ◆</div>
+    <div class="chapter-title">Glosario del Apothecario</div>
+    <div class="chapter-flavor">
+      "Nombrar al enemigo con precisión es el primer paso hacia su derrota. La imprecisión en el diagnóstico es la primera herida autoinfligida."
+    </div>
+  </div>
+
+  <div class="section-header">§ Terminología de Combate</div>
+
+  <div class="data-card">
+    <div class="data-card-header">
+      <span class="data-card-name">TERMINOLOGÍA ESENCIAL</span>
+      <span class="data-card-tag">Módulo I — Bacteriología</span>
+    </div>
+    <div class="data-card-body single" style="padding:0;">
+      <div>
+        <div class="glossary-entry" style="padding:14px 20px;">
+          <div class="glossary-term">Infección</div>
+          <div class="glossary-def">Desarrollo o multiplicación del microorganismo dentro del huésped <em>sin causar síntomas clínicos</em>. El agente está presente pero el huésped no manifiesta enfermedad.</div>
+        </div>
+        <div class="glossary-entry" style="padding:14px 20px;">
+          <div class="glossary-term">Enfermedad</div>
+          <div class="glossary-def">Alteración o desviación del estado fisiológico en una o varias partes del cuerpo, manifestada por síntomas y signos característicos. <em>(OMS)</em></div>
+        </div>
+        <div class="glossary-entry" style="padding:14px 20px;">
+          <div class="glossary-term">Enf. Infecciosa</div>
+          <div class="glossary-def">Manifestación clínica consecuente de una infección. Producida por un agente infeccioso (bacteria, hongos, virus) o sus productos (toxinas).</div>
+        </div>
+        <div class="glossary-entry" style="padding:14px 20px;">
+          <div class="glossary-term">Enf. Contagiosa</div>
+          <div class="glossary-def">Enfermedad que se transmite de un hospedero infectado a otro, directa o indirectamente.</div>
+        </div>
+        <div class="glossary-entry" style="padding:14px 20px;">
+          <div class="glossary-term">Zoonosis</div>
+          <div class="glossary-def">Enfermedades o infecciones cuyos agentes se transmiten naturalmente entre humanos y animales vertebrados. La rabia, la leptospirosis y la brucelosis son ejemplos.</div>
+        </div>
+        <div class="glossary-entry" style="padding:14px 20px;">
+          <div class="glossary-term">Patogenia</div>
+          <div class="glossary-def">Del griego <em>pathos</em> (enfermedad) + <em>genia</em> (estudio). Es el estudio del origen y desarrollo de las enfermedades.</div>
+        </div>
+        <div class="glossary-entry" style="padding:14px 20px;">
+          <div class="glossary-term">Virulencia</div>
+          <div class="glossary-def">El grado de patogenicidad de un microorganismo en un huésped susceptible. Cuantifica cuán "poderoso" es el agente.</div>
+        </div>
+        <div class="glossary-entry" style="padding:14px 20px;">
+          <div class="glossary-term">Factores de Virulencia</div>
+          <div class="glossary-def">Moléculas producidas por el patógeno que permiten: colonizar un nicho, evadir/suprimir la respuesta inmune, entrar y salir de células, obtener nutrición del huésped.</div>
+        </div>
+        <div class="glossary-entry" style="padding:14px 20px;">
+          <div class="glossary-term">Susceptibilidad</div>
+          <div class="glossary-def">Condición del huésped que aumenta la probabilidad de que desarrolle una infección o enfermedad en particular. <em>"Para que ocurra una enfermedad el huésped debe ser susceptible."</em></div>
+        </div>
+        <div class="glossary-entry" style="padding:14px 20px;">
+          <div class="glossary-term">Tropismo</div>
+          <div class="glossary-def">Predilección de virus o bacterias por determinadas células o tejidos. Determinado por receptores específicos en la superficie celular. Explica por qué las enfermedades afectan órganos específicos.</div>
+        </div>
+        <div class="glossary-entry" style="padding:14px 20px;">
+          <div class="glossary-term">Inmunidad</div>
+          <div class="glossary-def">Estado de resistencia que tienen ciertos individuos o especies frente a la acción patógena de microorganismos o sustancias extrañas.</div>
+        </div>
+        <div class="glossary-entry" style="padding:14px 20px;border-bottom:none;">
+          <div class="glossary-term">Epidemiología</div>
+          <div class="glossary-def">Estudia la distribución de la enfermedad y los factores que afectan directa o indirectamente el proceso salud-enfermedad en una población humana o animal. Triángulo: <strong style="color:var(--gold)">Agente → Huésped → Ambiente</strong>.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lore-block">
+    La infección no es igual a enfermedad. Un bovino puede estar infectado con el virus de la Leucosis Bovina Enzoótica durante años sin manifestar signos clínicos. Solo cuando el sistema inmune falla o la carga viral supera el umbral crítico aparece la Leucosis clínica. Este es el "efecto iceberg": solo vemos la punta, pero la base sumergida — los infectados sin síntomas — es inmensamente mayor.
+    <span class="lore-source">— Principio del Iceberg en Enfermedades Infecciosas · OIE</span>
+  </div>
+
+  <div class="section-header">§ Modos de Transmisión — Vectores de Infección</div>
+
+  <div class="transmission-grid">
+    <div class="transmission-card horiz">
+      <div class="transmission-icon">↔</div>
+      <div class="transmission-title">Transmisión Horizontal</div>
+      <div class="vector-row">
+        <div class="vector-type">Directa</div>
+        <div>Contacto directo entre animales (contacto físico, secreciones)</div>
+      </div>
+      <div class="vector-row">
+        <div class="vector-type">Indirecta</div>
+        <div>Por vectores (artrópodos) o fomites (objetos inanimados contaminados)</div>
+      </div>
+    </div>
+    <div class="transmission-card vert">
+      <div class="transmission-icon">↕</div>
+      <div class="transmission-title">Transmisión Vertical</div>
+      <div class="vector-row">
+        <div class="vector-type">Congénita</div>
+        <div>Transmisión transplacentaria de madre a feto</div>
+      </div>
+      <div class="vector-row">
+        <div class="vector-type">Calostro/Leche</div>
+        <div>Agente pasa a la cría durante la lactancia</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="data-card">
+    <div class="data-card-header">
+      <span class="data-card-name">Clasificación de Vectores</span>
+      <span class="data-card-tag">Táctica Avanzada</span>
+    </div>
+    <div class="data-card-body">
+      <div class="stat-block">
+        <div class="stat-label">Vector Mecánico</div>
+        <div class="stat-value">Transporta el agente de forma inespecífica. No se modifica ni reproduce en el vector. Contamina superficie, aparato bucal o tubo digestivo del vector.</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-label">Vector Biológico</div>
+        <div class="stat-value">El agente se multiplica y/o transforma en el vector. Transmisión efectiva y prolongada. El vector forma parte del ciclo biológico del agente.</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-label">Reservorio</div>
+        <div class="stat-value">Vector biológico donde el agente puede transmitirse de generación en generación por vía transovárica. Ejemplo: garrapatas y Ehrlichia.</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-label">Persistencia Ambiental</div>
+        <div class="stat-value">Después de una infección aguda el agente persiste en tejidos. Tiempo variable (días/meses/años/toda la vida). Los animales pueden quedarse como <strong style="color:var(--crimson-light)">portadores</strong>.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sep">✦ ✦ ✦</div>
+
+  <!-- ===== CHAPTER III: THREATS ===== -->
+  <div class="chapter" id="threats">
+    <div class="chapter-number">◆ Capítulo III ◆</div>
+    <div class="chapter-title">Clasificación de Amenazas</div>
+    <div class="chapter-flavor">
+      "No todos los enemigos son iguales. Algunos caen ante las medidas básicas. Otros requieren el armamento más pesado de que dispone el Capítulo."
+    </div>
+  </div>
+
+  <div class="section-header">§ La Microbiología en la Práctica Veterinaria</div>
+
+  <div class="lore-block">
+    Los agentes que el Apothecario veterinario debe conocer abarcan desde el inofensivo hasta el devastador: Parvovirosis, Rabia, Fiebre Aftosa, Brucelosis, Tuberculosis, Distemper Canino, Carbunco, Leptospirosis, Herpesvirus, Campylobacteriosis, Encefalitis Equina, Clostridium spp. La mayoría tienen impacto directo en la salud pública, pues el veterinario es el primer bastión contra las zoonosis.
+    <span class="lore-source">— Doctrina One Health · OMS/OIE/FAO</span>
+  </div>
+
+  <div class="section-header">§ Microorganismos No Patógenos — Aliados del Capítulo</div>
+  <p style="font-size:15px; margin-bottom:16px; color:var(--text-dim);">No toda vida microscópica es enemiga. El Apothecario aprende también a respetar y aprovechar los aliados:</p>
+
+  <div class="bsl-table" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; border:none;">
+    <div class="transmission-card horiz" style="text-align:center;">
+      <div style="font-size:30px;margin-bottom:8px;">🧀</div>
+      <div class="transmission-title">Alimentos Fermentados</div>
+      <p style="font-size:13px;color:var(--text-dim);">Yogur, queso, cerveza, pan — elaborados con levaduras y bacterias lácticas beneficiosas</p>
+    </div>
+    <div class="transmission-card horiz" style="text-align:center;">
+      <div style="font-size:30px;margin-bottom:8px;">🐄</div>
+      <div class="transmission-title">Flora Ruminal</div>
+      <p style="font-size:13px;color:var(--text-dim);">Microbiota esencial para la digestión en rumiantes — sin ella el bovino no puede procesar fibra</p>
+    </div>
+    <div class="transmission-card horiz" style="text-align:center;">
+      <div style="font-size:30px;margin-bottom:8px;">🦠</div>
+      <div class="transmission-title">Microbioma</div>
+      <p style="font-size:13px;color:var(--text-dim);">40 billones de bacterias habitan el cuerpo humano (1-2 kg de peso). Comunidad + función + ambiente = microbioma</p>
+    </div>
+  </div>
+
+  <div class="sep">✦ ✦ ✦</div>
+
+  <!-- ===== CHAPTER IV: BIOSECURITY ===== -->
+  <div class="chapter" id="biosecurity">
+    <div class="chapter-number">◆ Capítulo IV ◆</div>
+    <div class="chapter-title">Protocolos de Bioseguridad</div>
+    <div class="chapter-flavor">
+      "Un Apothecario muerto no puede salvar vidas. La protección del operador es doctrina sagrada del Capítulo."
+    </div>
+  </div>
+
+  <div class="section-header">§ Definición y Propósito</div>
+
+  <div class="data-card">
+    <div class="data-card-header">
+      <span class="data-card-name">BIOSEGURIDAD</span>
+      <span class="data-card-tag">Protocolo de Operaciones</span>
+    </div>
+    <div class="data-card-body">
+      <div class="stat-block">
+        <div class="stat-label">Definición</div>
+        <div class="stat-value">Aplicación del conocimiento, técnicas y equipos para prevenir la exposición del personal, del laboratorio y del medio ambiente a agentes potencialmente infecciosos o biopeligrosos.</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-label">Objetivo</div>
+        <div class="stat-value">1. Disminuir el riesgo asociado al trabajo en el laboratorio.<br>2. Minimizar el riesgo de contaminación o alteración del ambiente.</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-label">Agentes Biopeligrosos</div>
+        <div class="stat-value">Bacterias, virus, hongos, parásitos, productos recombinantes, alergenos, priones — todo agente potencialmente peligroso para humanos, animales y plantas.</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-label">¿Cuándo hay riesgo?</div>
+        <div class="stat-value">Siempre que se manipulen cultivos de microorganismos. Requiere: huésped susceptible + agente infeccioso + concentración suficiente + ruta de transmisión adecuada.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header">§ Niveles de Contención</div>
+
+  <div class="transmission-grid">
+    <div class="transmission-card horiz">
+      <div class="transmission-icon">🛡️</div>
+      <div class="transmission-title">Contención Primaria</div>
+      <p style="font-size:14px;color:var(--text-dim);">Protección del personal y el medio ambiente inmediato. Equipos de protección personal (EPP): guantes, gafas, mascarilla, calzado de seguridad. Campanas de flujo laminar. Lavado de manos obligatorio.</p>
+    </div>
+    <div class="transmission-card vert">
+      <div class="transmission-icon">🏗️</div>
+      <div class="transmission-title">Contención Secundaria</div>
+      <p style="font-size:14px;color:var(--text-dim);">Protección del medio ambiente externo al laboratorio. Comprende el diseño y construcción de instalaciones. Protege a la comunidad y animales de agentes liberados accidentalmente.</p>
+    </div>
+  </div>
+
+  <div class="section-header">§ Pirámide de Niveles de Bioseguridad (BSL)</div>
+
+  <p style="font-size:15px; color:var(--text-dim); margin-bottom:20px;">El nivel de bioseguridad depende del grupo de microorganismo: su capacidad patógena, modo de transmisión, huéspedes susceptibles, y disponibilidad de profilaxis y tratamiento.</p>
+
+  <div class="pyramid-container">
+    <div class="pyramid">
+      <div class="pyramid-level p4" style="margin:0 auto 6px;">
+        <div class="pyramid-badge">4</div>
+        <div>
+          <div class="pyramid-text" style="color:#c39bd3;">Contención Máxima</div>
+          <div style="font-size:13px;color:var(--text-dim);margin-top:4px;">Alto riesgo individual y comunitario. Sin tratamiento ni vacuna. <em>Ej: Ébola</em></div>
+        </div>
+      </div>
+      <div class="pyramid-level p3" style="margin:0 auto 6px;">
+        <div class="pyramid-badge">3</div>
+        <div>
+          <div class="pyramid-text" style="color:#e74c3c;">Contención</div>
+          <div style="font-size:13px;color:var(--text-dim);margin-top:4px;">Alto riesgo individual, bajo comunitario. Existe profilaxis. <em>Ej: Brucella, Mycobacterium, Rabia</em></div>
+        </div>
+      </div>
+      <div class="pyramid-level p2" style="margin:0 auto 6px;">
+        <div class="pyramid-badge">2</div>
+        <div>
+          <div class="pyramid-text" style="color:#f39c12;">Básico (Intermedio)</div>
+          <div style="font-size:13px;color:var(--text-dim);margin-top:4px;">Riesgo individual moderado, bajo comunitario. Existe tratamiento. <em>Ej: Leptospira, Salmonella</em></div>
+        </div>
+      </div>
+      <div class="pyramid-level p1" style="margin:0 auto 0;">
+        <div class="pyramid-badge">1</div>
+        <div>
+          <div class="pyramid-text" style="color:#2ecc71;">Básico</div>
+          <div style="font-size:13px;color:var(--text-dim);margin-top:4px;">Sin riesgo o bajo riesgo. No producen enfermedad en humanos sanos. <em>Ej: Bacillus subtilis</em></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header">§ Tabla de Clasificación Detallada</div>
+
+  <table class="bsl-table">
+    <thead>
+      <tr>
+        <th>Nivel BSL</th>
+        <th>Clasificación</th>
+        <th>Riesgo</th>
+        <th>Ejemplos</th>
+        <th>Equipamiento</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="bsl-badge bsl-1">BSL-1</span></td>
+        <td>Básico</td>
+        <td>Sin riesgo / mínimo</td>
+        <td><em>Bacillus subtilis, Hepatitis Infecciosa Canina</em></td>
+        <td>Mesada abierta, EPP básico</td>
+      </tr>
+      <tr>
+        <td><span class="bsl-badge bsl-2">BSL-2</span></td>
+        <td>Básico Intermedio</td>
+        <td>Moderado individual, bajo comunitario</td>
+        <td><em>Leptospira, Salmonella</em></td>
+        <td>EPP + campana de flujo laminar</td>
+      </tr>
+      <tr>
+        <td><span class="bsl-badge bsl-3">BSL-3</span></td>
+        <td>Contención</td>
+        <td>Alto individual, bajo comunitario</td>
+        <td><em>Brucella, Mycobacterium tuberculosis, Rabia, Coxiella burnetii</em></td>
+        <td>Acceso controlado, presión negativa, EPP completo</td>
+      </tr>
+      <tr>
+        <td><span class="bsl-badge bsl-4">BSL-4</span></td>
+        <td>Contención Máxima</td>
+        <td>Alto individual Y comunitario</td>
+        <td><em>Ébola, Virus Marburg</em></td>
+        <td>Traje presurizado completo, laboratorio aislado. <strong style="color:var(--crimson-light)">No existe en Uruguay (BSL-3 en Salto = único del país)</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="sep">✦ ✦ ✦</div>
+
+  <!-- ===== CHAPTER V: LAB PROTOCOLS ===== -->
+  <div class="chapter" id="protocols">
+    <div class="chapter-number">◆ Capítulo V ◆</div>
+    <div class="chapter-title">Protocolos del Laboratorio</div>
+    <div class="chapter-flavor">
+      "El laboratorio es el campo de batalla donde el Apothecario enfrenta al enemigo invisible. Las reglas no son sugerencias — son supervivencia."
+    </div>
+  </div>
+
+  <div class="section-header">§ Pautas de Trabajo Obligatorias</div>
+
+  <div class="warning-block">
+    El incumplimiento de estos protocolos pone en riesgo al operador, a sus compañeros y al medio ambiente. No son opcionales.
+  </div>
+
+  <ul class="protocol-list">
+    <li>Usar <strong style="color:var(--gold)">túnica</strong> en todo momento dentro del laboratorio</li>
+    <li>Las <strong style="color:var(--gold)">mesadas</strong> son exclusivamente para material de trabajo — ningún objeto personal</li>
+    <li>Solo sentarse en las <strong style="color:var(--gold)">sillas designadas</strong> del laboratorio</li>
+    <li><strong style="color:var(--crimson-light)">Prohibido comer, beber o tocarse la cara</strong> dentro del laboratorio</li>
+    <li>Mantener el <strong style="color:var(--gold)">cabello recogido</strong> durante toda la sesión práctica</li>
+    <li><strong style="color:var(--gold)">Limpiar y desinfectar la mesada</strong> al comienzo Y al final del trabajo</li>
+    <li>Descartar los materiales en <strong style="color:var(--gold)">recipientes adecuados</strong>: bolsas de residuos biológicos (rojas) y descartadores de punzocortantes</li>
+    <li>Lavado de manos correcto <strong style="color:var(--gold)">antes y después</strong> del trabajo</li>
+    <li>Notificar inmediatamente cualquier <strong style="color:var(--crimson-light)">derrame o accidente</strong> al docente responsable</li>
+  </ul>
+
+  <div class="section-header">§ Equipamiento del Laboratorio de Microbiología FVET</div>
+
+  <div class="data-card">
+    <div class="data-card-header">
+      <span class="data-card-name">Arsenal del Apothecario</span>
+      <span class="data-card-tag">Equipamiento Primario</span>
+    </div>
+    <div class="data-card-body">
+      <div class="stat-block">
+        <div class="stat-label">Mechero Bunsen</div>
+        <div class="stat-value">Crea zona estéril alrededor de la llama por convección. Esencial para trabajar en condiciones asépticas. Se usa para esterilizar asas de siembra y calentar medios.</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-label">Campana de Flujo Laminar</div>
+        <div class="stat-value">Contención primaria para manipulación de agentes BSL-2+. El flujo de aire filtrado (HEPA) protege tanto al operador como al material de trabajo de contaminaciones cruzadas.</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-label">Microscopios</div>
+        <div class="stat-label" style="margin-top:6px;">Óptico</div>
+        <div class="stat-value">Para bacterias (1-100 µm). Requiere tinción.</div>
+        <div class="stat-label" style="margin-top:6px;">Electrónico</div>
+        <div class="stat-value">Para virus (1-300 nm). No disponible en la mayoría de laboratorios de diagnóstico.</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-label">Medios de Cultivo</div>
+        <div class="stat-value">Agar sangre (bacterias hemolíticas), agar MacConkey (Gram negativas), caldo nutritivo. Permiten el crecimiento e identificación de colonias bacterianas por morfología y características bioquímicas.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sep">✦ ✦ ✦</div>
+
+  <!-- ===== CHAPTER VI: CAMPAIGN ===== -->
+  <div class="chapter" id="campaign">
+    <div class="chapter-number">◆ Capítulo VI ◆</div>
+    <div class="chapter-title">La Gran Campaña — One Health</div>
+    <div class="chapter-flavor">
+      "La salud de los animales, la salud de los humanos y la salud del medio ambiente son una sola causa. El veterinario es su defensor en todos los frentes."
+    </div>
+  </div>
+
+  <div class="one-health-grid">
+    <div class="one-health-card">
+      <div class="one-health-icon">🐄🐕🐎</div>
+      <div class="one-health-title">Animales</div>
+      <div class="one-health-text">Reservorios y víctimas de patógenos. El veterinario es el primer escudo entre ellos y la propagación de zoonosis a la población humana.</div>
+    </div>
+    <div class="one-health-card">
+      <div class="one-health-icon">👨‍👩‍👧‍👦</div>
+      <div class="one-health-title">Seres Humanos</div>
+      <div class="one-health-text">Vulnerables a más de 200 zoonosis conocidas. La vigilancia veterinaria es la primera línea de detección de amenazas emergentes como la Influenza Aviar y la Encefalitis Equina.</div>
+    </div>
+    <div class="one-health-card">
+      <div class="one-health-icon">🌿🌊🌍</div>
+      <div class="one-health-title">Medio Ambiente</div>
+      <div class="one-health-text">El ecosistema que alberga a todos los actores. La bioseguridad de laboratorio protege también el ambiente externo de contaminaciones accidentales.</div>
+    </div>
+  </div>
+
+  <div class="section-header">§ Programa de la Campaña — Cronograma de Operaciones 2026</div>
+
+  <div class="data-card">
+    <div class="data-card-header">
+      <span class="data-card-name">MÓDULOS DE COMBATE</span>
+      <span class="data-card-tag">Cronograma FVET 2026</span>
+    </div>
+    <div class="data-card-body single" style="padding:16px;">
+      <table class="bsl-table" style="margin:0;">
+        <thead>
+          <tr>
+            <th>Módulo</th>
+            <th>Temas</th>
+            <th>Parcial</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong style="color:var(--gold)">I — Bacteriología y Micología</strong></td>
+            <td>Introducción, Bioseguridad, Estructura bacteriana, Fisiología, Control del crecimiento, Bacterias Gram+/-, Reproducción, Recuento, Genética, Resistencia, Micobacterias, Hongos, Inmunidad</td>
+            <td><span class="bsl-badge bsl-3">2 May · 8-12h</span></td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--gold)">II — Virología</strong></td>
+            <td>Introducción a virología, Estructura viral, Multiplicación (ADN y ARN), Aislamiento y titulación, Mecanismos patogénicos, Genética y evolución viral, Familias virales principales</td>
+            <td rowspan="2"><span class="bsl-badge bsl-3">4 Jul · 8-12h</span></td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--gold)">III — Diagnóstico Microbiológico</strong></td>
+            <td>Técnicas moleculares, Técnicas serológicas, Remisión de muestras, Diagnóstico bacteriológico y viral</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section-header">§ Sistema de Evaluación — Registro de Hazañas</div>
+
+  <div class="exam-grid">
+    <div class="exam-card">
+      <span class="exam-points">80</span>
+      <span class="exam-label">Puntos</span>
+      <div class="exam-detail">2 Parciales<br>Individual · Múltiple Opción<br>40 preguntas c/u</div>
+    </div>
+    <div class="exam-card">
+      <span class="exam-points">15</span>
+      <span class="exam-label">Puntos</span>
+      <div class="exam-detail">Evaluación Continua<br>Prácticos<br>Grupal · Oral</div>
+    </div>
+    <div class="exam-card">
+      <span class="exam-points">5</span>
+      <span class="exam-label">Puntos</span>
+      <div class="exam-detail">Autoevaluación<br>Prácticos<br>Individual · EVA</div>
+    </div>
+  </div>
+
+  <div class="warning-block">
+    Requisito: 80% de asistencia a los Taller-Prácticos. Sin cumplirlo, no se puede acceder a la evaluación continua.
+  </div>
+
+  <div class="section-header">§ Clasificación de Rendimiento — Rango del Apothecario</div>
+
+  <div style="margin:20px 0;">
+    <div class="grade-row">
+      <span class="grade-pct">≥85% a 100%</span>
+      <div class="grade-bar"><div class="grade-fill" style="width:100%;background:var(--bsl1)"></div></div>
+      <span class="grade-name" style="color:var(--bsl1)">A — Excelente</span>
+      <span class="grade-status" style="color:var(--bsl1);border-color:var(--bsl1)">EXONERA</span>
+    </div>
+    <div class="grade-row">
+      <span class="grade-pct">≥75% a &lt;85%</span>
+      <div class="grade-bar"><div class="grade-fill" style="width:88%;background:#27ae60"></div></div>
+      <span class="grade-name" style="color:#27ae60">B — Muy Bueno</span>
+      <span class="grade-status" style="color:#27ae60;border-color:#27ae60">EXONERA</span>
+    </div>
+    <div class="grade-row">
+      <span class="grade-pct">≥65% a &lt;75%</span>
+      <div class="grade-bar"><div class="grade-fill" style="width:75%;background:var(--bsl2)"></div></div>
+      <span class="grade-name" style="color:var(--bsl2)">C — Bueno</span>
+      <span class="grade-status" style="color:var(--bsl2);border-color:var(--bsl2)">+10% examen</span>
+    </div>
+    <div class="grade-row">
+      <span class="grade-pct">≥60% a &lt;65%</span>
+      <div class="grade-bar"><div class="grade-fill" style="width:63%;background:#e67e22"></div></div>
+      <span class="grade-name" style="color:#e67e22">D — Aceptable</span>
+      <span class="grade-status" style="color:#e67e22;border-color:#e67e22">+5% examen</span>
+    </div>
+    <div class="grade-row">
+      <span class="grade-pct">≥50% a &lt;60%</span>
+      <div class="grade-bar"><div class="grade-fill" style="width:55%;background:var(--bsl3)"></div></div>
+      <span class="grade-name" style="color:var(--bsl3)">Sin Concepto</span>
+      <span class="grade-status" style="color:var(--bsl3);border-color:var(--bsl3)">APRUEBA→EXAMEN</span>
+    </div>
+    <div class="grade-row">
+      <span class="grade-pct">≥25% a &lt;50%</span>
+      <div class="grade-bar"><div class="grade-fill" style="width:38%;background:var(--bsl4)"></div></div>
+      <span class="grade-name" style="color:var(--bsl4)">E — Insuficiente</span>
+      <span class="grade-status" style="color:var(--bsl4);border-color:var(--bsl4)">APLAZADO</span>
+    </div>
+    <div class="grade-row">
+      <span class="grade-pct">0% a &lt;25%</span>
+      <div class="grade-bar"><div class="grade-fill" style="width:15%;background:#6c3483"></div></div>
+      <span class="grade-name" style="color:#6c3483">F — Muy Insuf.</span>
+      <span class="grade-status" style="color:#6c3483;border-color:#6c3483">APLAZADO</span>
+    </div>
+  </div>
+
+  <div class="sep">✦ ✦ ✦</div>
+
+  <div class="lore-block" style="text-align:center; font-size:18px; padding:30px 40px;">
+    Por el Capítulo, por los pacientes de cuatro patas, por las familias que dependen de los animales sanos — el Apothecario veterinario libra una guerra eterna contra el enemigo invisible. Conoce tu Codex. Aplica tu doctrina. Triunfa.
+    <span class="lore-source" style="text-align:center; display:block; margin-top:16px;">— Instrucción Final · Curso Microbiología Veterinaria 2026 · FVET UdelaR</span>
+  </div>
+
+</div><!-- /content -->
+
+<!-- ===== FOOTER ===== -->
+<div class="codex-footer">
+  <div class="footer-title">⚕ CODEX MICROBIOLOGÍA VETERINARIA · M.M. XXVI ⚕</div>
+  <div class="footer-text">
+    Facultad de Veterinaria · Universidad de la República · Uruguay<br>
+    Tercer Semestre · Plan 2021 · Elaborado con el estilo del Capítulo Apothecario para uso del estudiante en campaña.<br><br>
+    <em>Contacto Unidad Académica: microbiologia@fvet.edu.uy · Asunto: MICRO</em>
+  </div>
+</div>
+
+</div><!-- /main-content -->
+
+<script>
+  // Smooth scroll for navigation
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        const offset = 60;
+        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Entrance animation for data cards
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.data-card, .transmission-card, .exam-card, .one-health-card, .pyramid-level').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>

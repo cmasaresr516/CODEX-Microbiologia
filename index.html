@@ -864,6 +864,7 @@
   <a href="#cap-ix">IX. Control de Población</a>
   <a href="#cap-gram-positivas">X. Bacterias Gram +</a>
   <a href="#cap-gram-neg">XI. Bacterias Gram −</a>
+  <a href="#cap-reproduccion">XII. Reproducción Bacteriana</a>
 </nav>
 
 <div class="main-content">
@@ -5309,6 +5310,441 @@
 <div class="lore-block">
   "El conocimiento de las armas del enemigo no garantiza la victoria, pero sin él, la derrota es segura. El Apothecario que comprende la patogenicidad Gram negativa está armado donde otros caen."
   <div class="lore-source">— Doctrina Final del Capítulo XI, Codex Microbiológico FVET 2026</div>
+</div>
+
+<div class="sep"></div>
+  <div class="sep"></div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     CAPÍTULO XII — REPRODUCCIÓN BACTERIANA
+═══════════════════════════════════════════════════════════════ -->
+<div class="chapter" id="cap-reproduccion">
+  <div class="chapter-number">Capítulo XII</div>
+  <h2 class="chapter-title">Reproducción Bacteriana</h2>
+  <p class="chapter-flavor">
+    "El enemigo no muere; se fragmenta. No retrocede; se divide. Para cada unidad abatida,
+    la Biósfera produce dos. Apothecario, comprende su ritmo antes de diseñar su extinción."
+    <br><em>— Magos Biologis, Tratado sobre la Doctrina de la Fisión</em>
+  </p>
+</div>
+
+<!-- ── SECCIÓN 1: CRECIMIENTO BACTERIANO ── -->
+<div class="section-header">I. Doctrina del Crecimiento Microbiano</div>
+
+<div class="lore-block">
+  El <strong>crecimiento bacteriano</strong> no es el mero agrandamiento de una célula, sino el
+  <strong>aumento ordenado de TODOS sus componentes</strong> de forma proporcional — un proceso
+  designado como <em>crecimiento equilibrado</em>. Su consecuencia inevitable es la
+  <strong>reproducción</strong>: la división celular que duplica las filas del enemigo.
+  <div class="lore-source">Fuente: Doctrina Microbiológica, Clase Reproducción Bacteriana — VI Iribarnegaray, FVET UdelaR 2026</div>
+</div>
+
+<div class="warning-block">
+  ⚠ AVISO TÁCTICO — En cultivo no restringido, una sola célula de <em>E. coli</em> puede generar
+  más de 10⁹ descendientes en menos de 10 horas. La amenaza escala exponencialmente.
+  Nunca subestimes el tiempo de generación del enemigo.
+</div>
+
+<!-- ── SECCIÓN 2: TIPOS DE REPRODUCCIÓN ── -->
+<div class="section-header">II. Clasificación de las Amenazas Reproductivas</div>
+
+<p style="color:var(--text-secondary, #c9a84c); margin-bottom:1.2rem;">
+  La reproducción bacteriana es exclusivamente <strong>asexuada</strong>. Tres vectores de
+  proliferación han sido catalogados por el Ordo Biologis:
+</p>
+
+<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.2rem; margin-bottom:2rem;">
+
+  <!-- Fisión Binaria -->
+  <div class="data-card">
+    <div class="data-card-header">
+      <span class="data-card-name">Fisión Binaria</span>
+      <span class="data-card-tag">PROTOCOLO PRIMARIO</span>
+    </div>
+    <div class="data-card-body">
+      <p>Mecanismo dominante. Una célula progenitora genera <strong>dos células hijas idénticas</strong>
+      mediante la formación de un septo divisorio central.</p>
+      <div class="stat-block">
+        <div><span class="stat-label">Frecuencia</span><span class="stat-value">Universal</span></div>
+        <div><span class="stat-label">Hijas</span><span class="stat-value">2 (simétricas)</span></div>
+        <div><span class="stat-label">Vector</span><span class="stat-value">División central</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gemación -->
+  <div class="data-card">
+    <div class="data-card-header">
+      <span class="data-card-name">Gemación</span>
+      <span class="data-card-tag">PROTOCOLO SECUNDARIO</span>
+    </div>
+    <div class="data-card-body">
+      <p>La célula madre genera una <strong>yema polar</strong> que crece como célula hija
+      completamente nueva. Las estructuras internas deben formarse <em>de novo</em>.</p>
+      <div class="stat-block">
+        <div><span class="stat-label">Crecimiento</span><span class="stat-value">Desigual</span></div>
+        <div><span class="stat-label">Hija</span><span class="stat-value">Completamente nueva</span></div>
+        <div><span class="stat-label">Vector</span><span class="stat-value">Crecimiento polar</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fragmentación -->
+  <div class="data-card">
+    <div class="data-card-header">
+      <span class="data-card-name">Fragmentación</span>
+      <span class="data-card-tag">PROTOCOLO FILAMENTOSO</span>
+    </div>
+    <div class="data-card-body">
+      <p>Las células se alargan en <strong>filamentos multicelulares</strong>. El ADN se replica en
+      varias copias distribuidas a lo largo del filamento, que luego se fragmenta en
+      células hijas <em>asimétricas</em>.</p>
+      <div class="stat-block">
+        <div><span class="stat-label">Ejemplo</span><span class="stat-value">Actinomyces bovis</span></div>
+        <div><span class="stat-label">Hijas</span><span class="stat-value">Asimétricas</span></div>
+        <div><span class="stat-label">Relevancia</span><span class="stat-value">Bovinos (ósea)</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ── SECCIÓN 3: FISIÓN BINARIA EN DETALLE ── -->
+<div class="section-header">III. Anatomía de la Fisión Binaria — El Divisoma</div>
+
+<div class="lore-block">
+  El mecanismo de fisión binaria está orquestado por las <strong>proteínas Fts</strong>
+  (<em>filamentous temperature sensitive</em>), conservadas en prácticamente todas las
+  bacterias. Estas proteínas interactúan para ensamblar el <strong>Divisoma</strong>:
+  el aparato molecular de la división celular.
+  <div class="lore-source">Magos Biologis — Codex Molecularis, Entrada: Maquinaria de División Bacteriana</div>
+</div>
+
+<p style="color:var(--text-secondary, #c9a84c); margin-bottom:1rem;">
+  Las tres etapas de la bipartición son: (1) <strong>Elongación</strong> de la célula,
+  (2) <strong>Formación del septo</strong> en el plano de división, y
+  (3) <strong>Terminación del septo</strong>, síntesis de nuevas paredes y separación de las
+  células hijas.
+</p>
+
+<table class="bsl-table">
+  <thead>
+    <tr>
+      <th>Proteína Fts</th>
+      <th>Función en el Divisoma</th>
+      <th>Analogía Estructural</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>FtsZ</strong></td>
+      <td>Forma el <em>anillo Z</em> en el plano de división (centro celular). Análoga a la tubulina eucariota.</td>
+      <td>Anillo de contracción — el gatillo del corte</td>
+    </tr>
+    <tr>
+      <td><strong>ZipA</strong></td>
+      <td>Conecta y estabiliza el anillo FtsZ con la membrana citoplasmática.</td>
+      <td>Ancla del divisoma</td>
+    </tr>
+    <tr>
+      <td><strong>FtsA</strong></td>
+      <td>Conecta el anillo FtsZ con la membrana e incorpora otras proteínas al divisoma.</td>
+      <td>Puente de ensamblaje</td>
+    </tr>
+    <tr>
+      <td><strong>FtsI</strong></td>
+      <td>Participa en la síntesis del peptidoglicano del septo. <em>Proteína de unión a penicilina (PBP)</em>.</td>
+      <td>Constructor de la pared divisoria</td>
+    </tr>
+    <tr>
+      <td><strong>FtsK</strong></td>
+      <td>Participa en la separación y distribución correcta de los cromosomas a cada célula hija.</td>
+      <td>Coordinador genético</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Proteínas Min -->
+<div class="section-header" style="margin-top:2rem;">IV. Sistema de Control Min — La Guía del Plano de Corte</div>
+
+<p style="color:var(--text-secondary, #c9a84c); margin-bottom:1rem;">
+  Para que el divisoma se forme <strong>exactamente en el centro</strong> de la célula
+  (y nunca en los polos), actúan las <strong>proteínas Min</strong>:
+</p>
+
+<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; margin-bottom:1.5rem;">
+  <div class="data-card">
+    <div class="data-card-header">
+      <span class="data-card-name">MinC</span>
+      <span class="data-card-tag" style="background:#8b1a1a22; color:#c9a84c;">INHIBIDOR</span>
+    </div>
+    <div class="data-card-body">
+      Actúa como <strong>dímero</strong>. Se une a los polímeros de FtsZ y los
+      <em>desestabiliza</em>, bloqueando la formación del anillo Z en los polos.
+    </div>
+  </div>
+  <div class="data-card">
+    <div class="data-card-header">
+      <span class="data-card-name">MinD</span>
+      <span class="data-card-tag" style="background:#8b1a1a22; color:#c9a84c;">POSICIONADOR</span>
+    </div>
+    <div class="data-card-body">
+      Ayuda a MinC a situarse en la membrana. Juntos constituyen un sistema de
+      <strong>regulación negativa</strong> de la polimerización de FtsZ en zonas no centrales.
+    </div>
+  </div>
+  <div class="data-card">
+    <div class="data-card-header">
+      <span class="data-card-name">MinE</span>
+      <span class="data-card-tag" style="background:#1a3a1a55; color:#88c888;">DIRECTOR</span>
+    </div>
+    <div class="data-card-body">
+      <strong>Oscila de polo a polo</strong>. Desplaza MinC/MinD del centro, permitiendo que
+      FtsZ forme el anillo <em>exclusivamente</em> en el ecuador celular.
+    </div>
+  </div>
+</div>
+
+<div class="warning-block">
+  ⚠ VECTOR DE ATAQUE ANTIBIÓTICO — FtsI es una <strong>Proteína de Unión a Penicilina (PBP)</strong>.
+  La penicilina inhibe su actividad, bloqueando la síntesis del septo peptidoglicánico y
+  deteniendo la división celular. Este es uno de los blancos terapéuticos fundamentales en el arsenal del Apothecario.
+</div>
+
+<!-- ── SECCIÓN 5: BIOSÍNTESIS PEPTIDOGLICANO ── -->
+<div class="section-header" style="margin-top:2rem;">V. Biosíntesis del Peptidoglicano del Septo</div>
+
+<p style="color:var(--text-secondary, #c9a84c); margin-bottom:1rem;">
+  La formación del septo requiere la síntesis coordinada de nueva pared de peptidoglicano,
+  que involucra cuatro actores moleculares clave:
+</p>
+
+<ul class="protocol-list">
+  <li><strong>Precursores citoplásmicos:</strong> N-acetilglucosamina (NAG) + Ácido N-acetilmurámico (NAM),
+    asociados a la cadena peptídica (L-Ala, D-Glu, DAP, D-Ala). Se sintetizan en el citoplasma.</li>
+  <li><strong>Bactoprenol (transportador lipídico):</strong> Molécula anclada en la membrana que
+    captura los precursores y los transloca desde el citoplasma hacia el periplasma.</li>
+  <li><strong>Transglicosilasas:</strong> En el periplasma, catalizan la formación del enlace
+    glicosídico entre unidades de NAG y NAM, extendiendo las cadenas de glucano.</li>
+  <li><strong>Transpeptidasas (FtsI/PBPs):</strong> Forman los puentes peptídicos entre cadenas
+    adyacentes, confiriéndole resistencia mecánica al peptidoglicano. <em>Blanco de la penicilina.</em></li>
+  <li><strong>Autolisinas:</strong> Enzimas que hidrolizan la pared preexistente en sitios específicos
+    (entre NAM y el residuo alanina del puente), abriendo "brechas" para insertar el nuevo material.</li>
+</ul>
+
+<div class="lore-block">
+  En bacterias <strong>Gram negativas</strong>, la síntesis y separación del septo de peptidoglicano
+  ocurren <em>simultánea y coordinadamente</em>. En bacterias <strong>Gram positivas</strong>,
+  las células hijas permanecen unidas por el septo de mureína hasta que las autolisinas lo degradan
+  al final del proceso.
+  <div class="lore-source">Codex Structuralis Bacterialis — Capítulo IV: Paredes y Septos</div>
+</div>
+
+<!-- ── SECCIÓN 6: TIEMPO DE GENERACIÓN ── -->
+<div class="section-header" style="margin-top:2rem;">VI. Tiempo de Generación — Velocidad de la Amenaza</div>
+
+<div class="lore-block">
+  El <strong>tiempo de generación</strong> (o tiempo de duplicación) es el intervalo requerido
+  para que una célula se divida en dos, o equivalentemente, para que una población se duplique.
+  Es determinado genéticamente pero modulado por <em>temperatura</em> y <em>condiciones nutricionales</em>.
+  El número de células tras <em>n</em> generaciones es: <strong>N = N₀ × 2ⁿ</strong>
+  <div class="lore-source">Principio de la Progresión Exponencial — Magos Biologis</div>
+</div>
+
+<table class="bsl-table">
+  <thead>
+    <tr>
+      <th>Microorganismo</th>
+      <th>Temperatura (°C)</th>
+      <th>Tiempo de Generación</th>
+      <th>Clasificación de Amenaza</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><em>Beneckea natriegens</em></td>
+      <td>37</td>
+      <td>~10 min (0.16 h)</td>
+      <td><span class="bsl-badge bsl-4">BSL-RÁPIDO</span></td>
+    </tr>
+    <tr>
+      <td><em>Escherichia coli</em></td>
+      <td>40</td>
+      <td>~21 min (0.35 h)</td>
+      <td><span class="bsl-badge bsl-2">BSL-2</span></td>
+    </tr>
+    <tr>
+      <td><em>Staphylococcus aureus</em></td>
+      <td>37</td>
+      <td>~28 min (0.47 h)</td>
+      <td><span class="bsl-badge bsl-2">BSL-2</span></td>
+    </tr>
+    <tr>
+      <td><em>Pseudomonas aeruginosa</em></td>
+      <td>37</td>
+      <td>~35 min (0.58 h)</td>
+      <td><span class="bsl-badge bsl-2">BSL-2</span></td>
+    </tr>
+    <tr>
+      <td><em>Clostridium botulinum</em></td>
+      <td>37</td>
+      <td>~35 min (0.58 h)</td>
+      <td><span class="bsl-badge bsl-3">BSL-3</span></td>
+    </tr>
+    <tr>
+      <td><em>Mycobacterium tuberculosis</em></td>
+      <td>37</td>
+      <td>~12 horas</td>
+      <td><span class="bsl-badge bsl-3">BSL-LENTO</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ── SECCIÓN 7: CURVA DE CRECIMIENTO ── -->
+<div class="section-header" style="margin-top:2rem;">VII. Curva de Crecimiento en Cultivo Cerrado</div>
+
+<p style="color:var(--text-secondary, #c9a84c); margin-bottom:1rem;">
+  El cultivo cerrado (batch) es un sistema <strong>sin entrada ni salida</strong> de nutrientes ni
+  microorganismos. Sus nutrientes son limitados, lo que conduce a cuatro fases sucesivas de la
+  población bacteriana:
+</p>
+
+<!-- Las 4 fases como pirámide invertida / niveles visuales usando grade-bar -->
+<div style="margin: 1.5rem 0;">
+
+  <!-- FASE 1: Latencia -->
+  <div style="border-left: 3px solid #c9a84c; padding: 0.8rem 1rem 0.8rem 1.2rem; margin-bottom:1rem; background:rgba(201,168,76,0.05);">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
+      <strong style="color:#c9a84c; font-family:'Cinzel',serif; letter-spacing:0.05em;">① FASE DE LATENCIA</strong>
+      <span class="bsl-badge bsl-1" style="font-size:0.7rem;">SIN DIVISIÓN</span>
+    </div>
+    <p style="margin:0 0 0.5rem; color:var(--text-secondary,#bbb); font-size:0.9rem;">
+      El inóculo se <strong>adapta</strong> al nuevo medio. No hay incremento neto de células pero sí
+      intensa actividad metabólica: síntesis de nuevas enzimas, adaptación a temperatura y composición
+      del medio. Su duración depende de la <em>historia previa del microorganismo</em>.
+    </p>
+    <div class="grade-row">
+      <span class="stat-label">Velocidad neta de crecimiento</span>
+      <div class="grade-bar"><div class="grade-fill" style="width:5%; background:#555;"></div></div>
+    </div>
+  </div>
+
+  <!-- FASE 2: Exponencial -->
+  <div style="border-left: 3px solid #8b1a1a; padding: 0.8rem 1rem 0.8rem 1.2rem; margin-bottom:1rem; background:rgba(139,26,26,0.07);">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
+      <strong style="color:#c9a84c; font-family:'Cinzel',serif; letter-spacing:0.05em;">② FASE EXPONENCIAL (LOG)</strong>
+      <span class="bsl-badge bsl-4" style="font-size:0.7rem;">MÁXIMA AMENAZA</span>
+    </div>
+    <p style="margin:0 0 0.5rem; color:var(--text-secondary,#bbb); font-size:0.9rem;">
+      La población crece a <strong>velocidad máxima y constante</strong>: cada individuo se divide
+      según su tiempo de generación mínimo. Los componentes celulares aumentan proporcionalmente
+      (crecimiento equilibrado). Es la fase de mayor vulnerabilidad táctica del enemigo — y la más
+      peligrosa para el hospedero.
+    </p>
+    <div class="grade-row">
+      <span class="stat-label">Velocidad neta de crecimiento</span>
+      <div class="grade-bar"><div class="grade-fill" style="width:100%; background:#8b1a1a;"></div></div>
+    </div>
+  </div>
+
+  <!-- FASE 3: Estacionaria -->
+  <div style="border-left: 3px solid #6a6a3a; padding: 0.8rem 1rem 0.8rem 1.2rem; margin-bottom:1rem; background:rgba(100,100,50,0.06);">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
+      <strong style="color:#c9a84c; font-family:'Cinzel',serif; letter-spacing:0.05em;">③ FASE ESTACIONARIA</strong>
+      <span class="bsl-badge bsl-2" style="font-size:0.7rem;">EQUILIBRIO</span>
+    </div>
+    <p style="margin:0 0 0.5rem; color:var(--text-secondary,#bbb); font-size:0.9rem;">
+      La <strong>velocidad de crecimiento iguala a la velocidad de muerte</strong>: el número total de
+      células permanece estable. El crecimiento se detiene por agotamiento de algún nutriente esencial
+      o acumulación de metabolitos inhibitorios. En bacterias esporulantes, <em>comienza la formación
+      de esporas</em> en esta fase. El metabolismo continúa, aunque a menor velocidad.
+    </p>
+    <div class="grade-row">
+      <span class="stat-label">Velocidad neta de crecimiento</span>
+      <div class="grade-bar"><div class="grade-fill" style="width:0%; background:#6a6a3a;"></div></div>
+    </div>
+    <p style="margin:0.3rem 0 0; font-size:0.78rem; color:#888; font-style:italic;">
+      Crecimiento = Muerte → variación neta = 0
+    </p>
+  </div>
+
+  <!-- FASE 4: Muerte -->
+  <div style="border-left: 3px solid #4a1a1a; padding: 0.8rem 1rem 0.8rem 1.2rem; margin-bottom:1rem; background:rgba(80,10,10,0.06);">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
+      <strong style="color:#c9a84c; font-family:'Cinzel',serif; letter-spacing:0.05em;">④ FASE DE MUERTE</strong>
+      <span class="bsl-badge bsl-1" style="font-size:0.7rem; background:#4a1a1a; color:#c9a84c;">DECLIVE</span>
+    </div>
+    <p style="margin:0 0 0.5rem; color:var(--text-secondary,#bbb); font-size:0.9rem;">
+      La <strong>velocidad de muerte supera a la de crecimiento</strong>. La población disminuye de forma
+      exponencial — aunque más lentamente que durante la fase exponencial de crecimiento. Los recursos
+      agotados y la acumulación de desechos tóxicos conducen al colapso de la población.
+    </p>
+    <div class="grade-row">
+      <span class="stat-label">Velocidad neta de crecimiento</span>
+      <div class="grade-bar"><div class="grade-fill" style="width:20%; background:#4a1a1a;"></div></div>
+    </div>
+    <p style="margin:0.3rem 0 0; font-size:0.78rem; color:#888; font-style:italic;">
+      Muerte &gt; Crecimiento → declive neto exponencial
+    </p>
+  </div>
+</div>
+
+<!-- ── SECCIÓN 8: GLOSARIO ── -->
+<div class="section-header" style="margin-top:2rem;">VIII. Glosario del Apothecario — Terminología Esencial</div>
+
+<div class="glossary-entry">
+  <span class="glossary-term">Fisión binaria / Bipartición</span>
+  <span class="glossary-def">Forma de reproducción asexuada más frecuente en bacterias. Una célula
+  progenitora origina dos células hijas mediante la formación de un septo central.</span>
+</div>
+<div class="glossary-entry">
+  <span class="glossary-term">Divisoma</span>
+  <span class="glossary-def">Complejo multiproteico bacteriano que coordina la división celular.
+  Integrado por proteínas Fts (FtsZ, ZipA, FtsA, FtsI, FtsK) ensambladas en el plano de división.</span>
+</div>
+<div class="glossary-entry">
+  <span class="glossary-term">Anillo FtsZ</span>
+  <span class="glossary-def">Polímero proteico que rodea el ecuador de la célula bacteriana y actúa
+  como andamiaje del divisoma. Evolutivamente emparentado con la tubulina eucariota.</span>
+</div>
+<div class="glossary-entry">
+  <span class="glossary-term">Proteínas de unión a penicilina (PBPs)</span>
+  <span class="glossary-def">Enzimas (como FtsI) que catalizan la transpeptidación del peptidoglicano.
+  La penicilina inhibe competitivamente su actividad bloqueando la formación del septo.</span>
+</div>
+<div class="glossary-entry">
+  <span class="glossary-term">Bactoprenol</span>
+  <span class="glossary-def">Transportador lipídico anclado en la membrana citoplasmática que traslada
+  los precursores del peptidoglicano desde el citoplasma hacia el periplasma.</span>
+</div>
+<div class="glossary-entry">
+  <span class="glossary-term">Autolisinas</span>
+  <span class="glossary-def">Enzimas que hidrolizan la capa de peptidoglicano en sitios específicos
+  para permitir la inserción de nuevas unidades durante el crecimiento y la división.</span>
+</div>
+<div class="glossary-entry">
+  <span class="glossary-term">Tiempo de generación</span>
+  <span class="glossary-def">Intervalo necesario para que una célula bacteriana se divida en dos,
+  o para que una población se duplique. Determinado genéticamente y modulado por el ambiente.</span>
+</div>
+<div class="glossary-entry">
+  <span class="glossary-term">Cultivo cerrado (batch)</span>
+  <span class="glossary-def">Sistema de cultivo sin entrada ni salida de nutrientes ni microorganismos.
+  Las bacterias atraviesan cuatro fases: latencia, exponencial, estacionaria y muerte.</span>
+</div>
+<div class="glossary-entry">
+  <span class="glossary-term">MreB</span>
+  <span class="glossary-def">Proteína bacteriana análoga a la actina eucariota. Actúa como
+  citoesqueleto, determinando la morfología celular y dirigiendo los sitios de síntesis de la pared.</span>
+</div>
+
+<div class="ornament"></div>
+
+<div class="lore-block">
+  "Conocer el ritmo reproductivo del enemigo es conocer su talón de Aquiles. El Apothecario que
+  comprende el Divisoma, comprende la vulnerabilidad fundamental de toda vida procariota.
+  FtsI es la cerradura; la penicilina, la llave forjada en la ignorancia del enemigo."
+  <div class="lore-source">— Archivum Microbiologis, FVET UdelaR · Victoria Iribarnegaray, 2026</div>
 </div>
 
 <div class="sep"></div>

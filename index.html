@@ -805,68 +805,228 @@
   .glossary-def { font-size: 15px; color: var(--text-main); }
 
   /* ——————————————— NAVIGATION ——————————————— */
-  .nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    background: rgba(26,18,8,0.95);
-    border-bottom: 2px solid var(--gold-dark);
-    padding: 10px 30px;
-    display: flex;
-    gap: 24px;
-    align-items: center;
-    backdrop-filter: blur(10px);
-    overflow-x: auto;
-    flex-wrap: nowrap;
+  /* ——————————————— SIDEBAR NAV ——————————————— */
+.codex-nav-wrapper {
+  position: fixed;
+  top: 0; left: 0;
+  width: 220px;
+  height: 100vh;
+  background: rgba(26,18,8,0.97);
+  border-right: 2px solid var(--gold-dark);
+  display: flex;
+  flex-direction: column;
+  z-index: 200;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold-dark) transparent;
+}
+.codex-nav-wrapper::-webkit-scrollbar { width: 4px; }
+.codex-nav-wrapper::-webkit-scrollbar-thumb { background: var(--gold-dark); }
+.codex-nav-logo {
+  padding: 18px 16px 14px;
+  border-bottom: 1px solid var(--gold-dark);
+  text-align: center;
+  flex-shrink: 0;
+}
+.codex-nav-logo .logo-icon {
+  font-size: 28px;
+  color: var(--gold-light);
+  display: block;
+  margin-bottom: 4px;
+}
+.codex-nav-logo .logo-title {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+.nav-chapter-indicator {
+  padding: 10px 16px 8px;
+  border-bottom: 1px solid rgba(201,168,76,0.15);
+  flex-shrink: 0;
+}
+.nav-chapter-indicator .cap-label {
+  font-family: 'Cinzel', serif;
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: var(--crimson-light);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.nav-chapter-indicator .cap-name {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 1px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.3s;
+}
+.nav-progress-bar {
+  height: 2px;
+  background: rgba(201,168,76,0.1);
+  margin-top: 8px;
+  border-radius: 1px;
+}
+.nav-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--crimson), var(--gold));
+  border-radius: 1px;
+  transition: width 0.4s ease;
+  width: 8%;
+}
+.nav-chapters { flex: 1; padding: 8px 0; }
+.nav-item {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 7px 16px;
+  border-left: 3px solid transparent;
+  transition: background 0.15s;
+}
+.nav-item:hover {
+  background: rgba(201,168,76,0.06);
+  border-left-color: var(--gold-dark);
+}
+.nav-item.active {
+  background: rgba(139,26,26,0.18);
+  border-left-color: var(--crimson-light);
+}
+.nav-item .num {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 9px;
+  color: var(--gold-dark);
+  min-width: 20px;
+  flex-shrink: 0;
+  transition: color 0.15s;
+}
+.nav-item.active .num { color: var(--crimson-light); }
+.nav-item:hover .num { color: var(--gold); }
+.nav-item .label {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  line-height: 1.3;
+  transition: color 0.15s;
+}
+.nav-item.active .label { color: var(--text-main); }
+.nav-item:hover .label { color: var(--gold); }
+.nav-item .active-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--crimson-light);
+  margin-left: auto;
+  flex-shrink: 0;
+  opacity: 0;
+  box-shadow: 0 0 6px rgba(192,57,43,0.6);
+}
+.nav-item.active .active-dot { opacity: 1; }
+.nav-footer {
+  padding: 12px 16px;
+  border-top: 1px solid rgba(201,168,76,0.15);
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  flex-shrink: 0;
+  line-height: 1.6;
+}
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 12px; left: 12px;
+  z-index: 300;
+  background: rgba(26,18,8,0.95);
+  border: 1px solid var(--gold-dark);
+  color: var(--gold);
+  font-size: 18px;
+  width: 40px; height: 40px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+.main-content { margin-left: 220px; }
+@media (max-width: 700px) {
+  .hamburger { display: flex; }
+  .codex-nav-wrapper {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    width: 200px;
   }
-
-  .nav-title {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 14px;
-    color: var(--gold);
-    white-space: nowrap;
-    flex-shrink: 0;
-    margin-right: 10px;
-  }
-
-  .nav a {
-    font-family: 'Cinzel', serif;
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: var(--text-dim);
-    text-decoration: none;
-    text-transform: uppercase;
-    white-space: nowrap;
-    flex-shrink: 0;
-    transition: color 0.2s;
-  }
-
-  .nav a:hover { color: var(--gold); }
-
-  .main-content { padding-top: 50px; }
-
+  .codex-nav-wrapper.open { transform: translateX(0); }
+  .main-content { margin-left: 0 !important; }
+}
 </style>
 </head>
 <body>
 
-<nav class="nav">
-  <div class="nav-title">⚕ CODEX</div>
-  <a href="#intro">I. Introducción</a>
-  <a href="#concepts">II. Conceptos</a>
-  <a href="#threats">III. Amenazas</a>
-  <a href="#biosecurity">IV. Bioseguridad</a>
-  <a href="#protocols">V. Protocolos</a>
-  <a href="#campaign">VI. Campaña</a>
-  <a href="#structure">VII. Estructura Bacteriana</a>
-  <a href="#fisiology">VIII. Fisiología Bacteriana</a>
-  <a href="#cap-ix">IX. Control de Población</a>
-  <a href="#cap-gram-positivas">X. Bacterias Gram +</a>
-  <a href="#cap-gram-neg">XI. Bacterias Gram −</a>
-  <a href="#cap-reproduccion">XII. Reproducción Bacteriana</a>
-</nav>
 
+<button class="hamburger" id="ham"
+  onclick="document.getElementById('codex-sidebar').classList.toggle('open')">☰</button>
+
+<nav class="codex-nav-wrapper" id="codex-sidebar">
+  <div class="codex-nav-logo">
+    <span class="logo-icon">⚕</span>
+    <span class="logo-title">Codex Micro</span>
+  </div>
+
+  <div class="nav-chapter-indicator">
+    <div class="cap-label">▸ Leyendo ahora</div>
+    <div class="cap-name" id="current-cap">I. Introducción</div>
+    <div class="nav-progress-bar">
+      <div class="nav-progress-fill" id="prog-fill"></div>
+    </div>
+  </div>
+
+  <div class="nav-chapters">
+    <a class="nav-item active" href="#intro" data-label="I. Introducción" data-pct="8">
+      <span class="num">I</span><span class="label">Introducción</span><span class="active-dot"></span>
+    </a>
+    <a class="nav-item" href="#concepts" data-label="II. Glosario" data-pct="17">
+      <span class="num">II</span><span class="label">Glosario</span><span class="active-dot"></span>
+    </a>
+    <a class="nav-item" href="#threats" data-label="III. Clasificación" data-pct="25">
+      <span class="num">III</span><span class="label">Clasificación</span><span class="active-dot"></span>
+    </a>
+    <a class="nav-item" href="#biosecurity" data-label="IV. Bioseguridad" data-pct="33">
+      <span class="num">IV</span><span class="label">Bioseguridad</span><span class="active-dot"></span>
+    </a>
+    <a class="nav-item" href="#protocols" data-label="V. Laboratorio" data-pct="42">
+      <span class="num">V</span><span class="label">Laboratorio</span><span class="active-dot"></span>
+    </a>
+    <a class="nav-item" href="#campaign" data-label="VI. One Health" data-pct="50">
+      <span class="num">VI</span><span class="label">One Health</span><span class="active-dot"></span>
+    </a>
+    <a class="nav-item" href="#structure" data-label="VII. Estructura Bact." data-pct="58">
+      <span class="num">VII</span><span class="label">Estructura Bact.</span><span class="active-dot"></span>
+    </a>
+    <a class="nav-item" href="#fisiology" data-label="VIII. Fisiología Bact." data-pct="67">
+      <span class="num">VIII</span><span class="label">Fisiología Bact.</span><span class="active-dot"></span>
+    </a>
+    <a class="nav-item" href="#cap-ix" data-label="IX. Control Pob." data-pct="75">
+      <span class="num">IX</span><span class="label">Control Pob.</span><span class="active-dot"></span>
+    </a>
+    <a class="nav-item" href="#cap-gram-positivas" data-label="X. Gram Positivas" data-pct="83">
+      <span class="num">X</span><span class="label">Gram Positivas</span><span class="active-dot"></span>
+    </a>
+    <a class="nav-item" href="#cap-gram-neg" data-label="XI. Gram Negativas" data-pct="92">
+      <span class="num">XI</span><span class="label">Gram Negativas</span><span class="active-dot"></span>
+    </a>
+    <a class="nav-item" href="#cap-reproduccion" data-label="XII. Reproducción" data-pct="100">
+      <span class="num">XII</span><span class="label">Reproducción</span><span class="active-dot"></span>
+    </a>
+  </div>
+
+  <div class="nav-footer">FVET · UdelaR<br>M.M. XXVI</div>
+</nav>
 <div class="main-content">
 
 <!-- ===== COVER ===== -->
@@ -5763,21 +5923,51 @@
 </div><!-- /main-content -->
 
 <script>
-  // Smooth scroll for navigation
+  // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       e.preventDefault();
       const target = document.querySelector(this.getAttribute('href'));
       if (target) {
-        const offset = 60;
-        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        const top = target.getBoundingClientRect().top + window.pageYOffset - 20;
         window.scrollTo({ top, behavior: 'smooth' });
       }
+      // cerrar sidebar en móvil al hacer click
+      document.getElementById('codex-sidebar').classList.remove('open');
     });
   });
 
-  // Entrance animation for data cards
-  const observer = new IntersectionObserver((entries) => {
+  // Scroll spy
+  const navItems = document.querySelectorAll('.nav-item');
+  const capName = document.getElementById('current-cap');
+  const progFill = document.getElementById('prog-fill');
+
+  const sections = Array.from(navItems).map(item => ({
+    el: document.querySelector(item.getAttribute('href')),
+    navItem: item,
+    label: item.dataset.label,
+    pct: item.dataset.pct
+  })).filter(s => s.el);
+
+  const spyObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const match = sections.find(s => s.el === entry.target);
+        if (match) {
+          navItems.forEach(i => i.classList.remove('active'));
+          match.navItem.classList.add('active');
+          capName.textContent = match.label;
+          progFill.style.width = match.pct + '%';
+          match.navItem.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        }
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  sections.forEach(s => spyObserver.observe(s.el));
+
+  // Animaciones de entrada
+  const animObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.style.opacity = '1';
@@ -5790,7 +5980,7 @@
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    observer.observe(el);
+    animObserver.observe(el);
   });
 </script>
 </body>
